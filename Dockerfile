@@ -1,16 +1,12 @@
 FROM node:5-slim
+
 # grab tini for signal processing and zombie killing
 ENV TINI_VERSION 0.9.0
-
 RUN set -x \
-
-&& apt-get update && apt-get install -y ca-certificates curl \
-
---no-install-recommends \
-
-&& curl -fSL "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini" -o /usr/local/bin/tini \
-
-&& curl -fSL "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini.asc" -o /usr/local/bin/tini.asc \
+	&& apt-get update && apt-get install -y ca-certificates curl \
+		--no-install-recommends \
+	&& curl -fSL "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini" -o /usr/local/bin/tini \
+	&& curl -fSL "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini.asc" -o /usr/local/bin/tini.asc \
 	&& export GNUPGHOME="$(mktemp -d)" \
 	&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 6380DC428747F6C393FEACA59A84159D7001A4E5 \
 	&& gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini \
