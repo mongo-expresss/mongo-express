@@ -4,8 +4,11 @@ var mongo;
 
 // Accesing Bluemix variable to get MongoDB info
 if (process.env.VCAP_SERVICES) {
+  
   var dbLabel = 'mongodb-2.4';
   var env = JSON.parse(process.env.VCAP_SERVICES);
+  
+  
   if (env[dbLabel]) {
     mongo = env[dbLabel][0].credentials;
   }
@@ -20,6 +23,8 @@ if (process.env.VCAP_SERVICES) {
 var meConfigMongodbServer = process.env.ME_CONFIG_MONGODB_SERVER ? process.env.ME_CONFIG_MONGODB_SERVER.split(',') : false;
 
 module.exports = {
+  
+  
   mongodb: {
     // if a connection string options such as server/port/etc are ignored
     connectionString: mongo.connectionString || '',
