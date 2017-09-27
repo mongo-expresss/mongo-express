@@ -4,7 +4,9 @@
 * Fix content-disposition non-ascii header, set config.gridFSEnabled via env vars (#304)
 
 0.35.0 - Thu Jan 5, 2017
+
 ------
+
 * Removed Duplicated navbar in mobile layout (#302)
 * Add logger options to control logging (#300)
 * Pass options in middleware-only usage (#299)
