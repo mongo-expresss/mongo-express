@@ -109,6 +109,17 @@
   </div>
 </form>
 
+{% if !settings.read_only %}
+  <br>
+  <form method="POST" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-danger">
+      <span class="glyphicon glyphicon-trash"></span>
+      Delete
+    </button>
+  </form>
+{% endif %}
+
 {% endblock %}
 
 

@@ -88,6 +88,23 @@
       </div>
   </div>
  -->
+<div class="row">
+  <div class="col-md-12">
+    <h2>Add File</h2>
+    <form method="POST" action="{{ baseHref }}db/{{ dbName }}/gridFS/{{ bucketName }}/" enctype="multipart/form-data" class="well form-inline">
+
+      <div class="form-group">
+        <input type="file" class="input-medium span7" name="filefield">
+      </div>
+
+      <button type="submit" class="btn btn-success pull-right">
+        <span class="glyphicon glyphicon-upload"></span>
+        Upload
+      </button>
+    </form>
+  </div>
+</div>
+{% endif %}
 
 
 {% endblock %}

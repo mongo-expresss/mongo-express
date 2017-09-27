@@ -1,3 +1,105 @@
+0.42.2 - Sat Aug 12, 2017
+------
+
+- Fixed default port in lib/db.js from documentation
+
+
+0.42.1 - Mon Aug 7, 2017
+------
+
+- Fixed typo in tag of collection view (#357)
+
+
+0.42.0 - Thu Jul 20, 2017
+------
+
+- Add connectionString support to connection (#350)
+
+
+0.41.0 - Tue Jul 4, 2017
+------
+
+- Use stream for exporting collections (#345)
+- Solution for CSRF wiht base url (#347)
+
+
+0.40.0 - Mon May 1, 2017
+------
+
+- Fixed more flexible db names (#339)
+- Fixed escaping in nested objects
+- Fixed path resolve for windows for the builds
+- Fixed revise the list database function to support user having access to admin database (#338)
+
+
+0.39.2 - Sun Apr 16, 2017
+------
+
+## Fixes
+* Fixed bug with collapsibleJSON property not able to render properly
+
+
+0.39.1 - Sun Mar 26, 2017
+------
+
+## New
+* Better windows support with usage of cross-env
+
+
+0.39.0 - Sun Mar 26, 2017
+------
+
+## New 
+* Add Create Index functionality (#326)
+
+## Chores
+* Added a bit of readme info, and updated license
+
+
+0.38.0 - Sat Feb 25, 2017
+------
+
+## New
+* Support for mounting on a different baseHref (#320)
+
+## Chores
+* Improve configuration step (#321)
+
+
+0.37.2 - Tue Feb 21, 2017
+------
+
+## Fixes
+* Small publishing fixes
+
+
+0.37.1 - Tue Feb 21, 2017
+------
+
+## Fixes
+* Build is now shipped as part of package
+
+
+0.37.0 - Mon Feb 20, 2017
+------
+
+## New
+* Added support for Collection with slash in the name (#309)
+* Changed the way scripts work (#312)
+    - Scripts are now built using babel and are in their own files.
+    - Each page has it's own mini-bundle + vendor bundle
+    - Scripts are built on install and output a json file that is used for url purposes
+* Added more tests, and new test utils! (#314, #315)
+
+## Fixes
+* Fixed issue where parenthese we're stringified incorrectly (#306)
+* Fixed loadDocument script that was rendered properly in read-only (#308)
+
+## Varia
+* Removed underscore and use only lodash. (#307)
+* Removed Snyk. It was causing more annoyance than actual good (#306)
+* Updated swig to swig-template, which uses a safe version (#311)
+
 
 0.36.0 - Tue Feb 7, 2017
 ------
