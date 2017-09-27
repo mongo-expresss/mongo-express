@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ document._id|to_string }}{% endblock %}
+
+
+{% block styles %}
+  <link href="{{ baseHref }}public/css/codemirror.css" rel="stylesheet">
+  {% if editorTheme != "default" %}
+  <link href="{{ baseHref }}public/css/theme/{{ editorTheme }}.css" rel="stylesheet">
+  {% endif %}
+
+  <style type="text/css">
+    .CodeMirror-scroll {
+      height: auto;
+      overflow-y: hidden;
+      overflow-x: auto;
+      width: 100%;
+    }
+    .CodeMirror {
+      height: auto;
+    }
+  </style>
+{% endblock %}
+
+
+{% block breadcrumb %}
+  <li>
+    <a href="{{ baseHref }}db/{{ dbName}}">Database:</a>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ dbName }}<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      {% for db in databases %}
+      <li><a href="{{ baseHref }}db/{{ db }}/">{{ db }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+  <li>
+    <a href="{{ baseHref }}db/{{ dbName}}"><span class="glyphicon glyphicon-chevron-right"></span></a>
+  </li>
+  <li>
+    <a href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}">Collection:</a>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ collectionName }}<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      {% for collection in collections %}
+      <li><a href="{{ baseHref }}db/{{ dbName }}/{{ collection }}">{{ collection }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+  <li>
+    <a href="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </li>
+  <li><a>Document {{ document._id|to_string }}</a></li>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST"
+  id="documentEditForm"
+  action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}"
+>
+  {% if docLength > 10 %}
+    <div>
+      {% if !settings.read_only %}
+        <input type="hidden" name="_method" value="put">
+        <button onclick="return onBackClick()" class="backButton btn btn-warning btn-large">
+         <span class="glyphicon glyphicon-arrow-left"></span>
+          Back
+        </button>
+        <button type="submit" class="btn btn-success btn-large pull-right" onclick="return onSubmitClick()">
+          <span class="glyphicon glyphicon-pencil"></span>
+          Save
+        </button>
+      {% else %}
+        <button onclick="return history.back()" class="btn btn-warning btn-large btn-block">
+         <span class="glyphicon glyphicon-arrow-left"></span>
+          Back
+        </button>
+      {% endif %}
+    </div>
+  <br />
+  {% endif %}
+
+  <textarea class="col-md-12" id="document" name="document"{% if settings.read_only %} readonly="readonly"{% endif %}>{{ docString }}</textarea>
+  <br />
+
+  <div>
+    {% if !settings.read_only %}
+      <input type="hidden" name="_method" value="put">
+      <button onclick="return onBackClick()" class="backButton btn btn-warning btn-large">
+       <span class="glyphicon glyphicon-arrow-left"></span>
+        Back
+      </button>
+
+      <button type="submit" class="btn btn-success btn-large pull-right" onclick="return onSubmitClick()">
+        <span class="glyphicon glyphicon-pencil"></span>
+        Save
+      </button>
+    {% else %}
+      <button onclick="return history.back()" class="btn btn-warning btn-large btn-block">
+       <span class="glyphicon glyphicon-arrow-left"></span>
+        Back
+      </button>
+    {% endif %}
+  </div>
+</form>
+
+{% if !settings.read_only %}
+  <br>
+  <form method="POST" action="{{ baseHref }}db/{{ dbName }}/{{ collectionName | url_encode }}/{{ document._id | json | safe | url_encode }}">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-danger">
+      <span class="glyphicon glyphicon-trash"></span>
+      Delete
+    </button>
+  </form>
+{% endif %}
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ baseHref }}{{ assets.codemirror.js }}"></script>
+<script src="{{ baseHref }}{{ assets.document.js }}"></script>
+{% endblock %}
