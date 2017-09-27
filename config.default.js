@@ -2,6 +2,8 @@
 
 var mongo;
 
+
+
 // Accesing Bluemix variable to get MongoDB info
 if (process.env.VCAP_SERVICES) {
   var dbLabel = 'mongodb-2.4';
@@ -66,6 +68,8 @@ module.exports = {
     //  >>>>  If you are using an admin mongodb account, or no admin account exists, fill out section below
     //  >>>>  Using an admin account allows you to view and edit all databases, and view stats
 
+    
+    
     //leave username and password empty if no admin account exists
     adminUsername: process.env.ME_CONFIG_MONGODB_ADMINUSERNAME || '',
     adminPassword: process.env.ME_CONFIG_MONGODB_ADMINPASSWORD || '',
