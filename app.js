@@ -2,6 +2,8 @@
 
 'use strict';
 
+
+
 const clc             = require('cli-color');
 const csrf            = require('csurf');
 const commander       = require('commander');
@@ -39,6 +41,8 @@ try {
 
   config = require('./config.default');
 }
+
+
 
 if (config.options.console) {
   console.log('Welcome to mongo-express');
