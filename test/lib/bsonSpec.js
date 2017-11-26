@@ -3,6 +3,7 @@
 var expect = require('chai').expect;
 var mongodb = require('mongodb');
 
+
 var bson = require('../../lib/bson');
 
 describe('BSON', function () {
