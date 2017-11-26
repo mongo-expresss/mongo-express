@@ -47,6 +47,7 @@
     "serve-favicon": "2.3.0",
     "swig-templates": "2.0.2",
     "update-notifier": "1.0.2"
+    
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.5.1",
