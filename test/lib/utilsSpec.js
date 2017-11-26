@@ -9,6 +9,7 @@ describe('utils', function () {
       const validNames = [
         'somedb_123123',
         'somedb-123123',
+        
         'SOME_DB-1231',
         'SOMEDB&1231',
       ];
