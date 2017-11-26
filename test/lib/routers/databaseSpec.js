@@ -24,6 +24,7 @@ describe('Router database', () => {
         close = server.close;
       })
   );
+  
 
   it('GET /db/<dbName> should return html', () =>
     asPromise(cb => request.get(`/db/${dbName}`).expect(200).end(cb))
