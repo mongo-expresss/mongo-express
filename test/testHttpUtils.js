@@ -8,6 +8,7 @@ const middleware = require('../lib/middleware');
 
 exports.createServer = () => {
   const app = middleware(defaultConf());
+  
   const httpServer = app.listen();
   const request = supertest.agent(httpServer);
   // There is currently a race condition with collection registering to mongoDb.
