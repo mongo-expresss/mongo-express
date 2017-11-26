@@ -4,6 +4,7 @@ exports.asPromise = function (fct) {
   return new Promise((resolve, reject) =>
     fct((err, result) => {
       if (err) reject(err);
+    
       else resolve(result);
     })
   );
