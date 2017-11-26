@@ -6,6 +6,7 @@ module.exports = () => ({
   mongodb: {
     server: mongoConfig.host,
     port: mongoConfig.port,
+    
 
     autoReconnect: true,
     poolSize: 4,
