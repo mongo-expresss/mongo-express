@@ -11,3 +11,4 @@ applications:
     - db-mongo
   env:
     NODE_ENV: cloud-foundry
+    
