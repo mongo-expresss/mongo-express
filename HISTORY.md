@@ -124,6 +124,7 @@
 * Delete all Documents matching a query.
 
 ## Fixes
+
 * Fixed issue where binary types we're converted to string when updating a document
 
 0.32.0 - Sat Nov 12, 2016
