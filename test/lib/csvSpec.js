@@ -1,6 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect;
+
 var mongo = require('mongodb');
 var csv = require('../../lib/csv');
 
